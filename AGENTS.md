@@ -21,9 +21,11 @@ Before adding anything, name the concrete user transition and design decision it
 
 ## Work and evidence
 
-Default to documentation and a bounded host mapping plan. Implementation needs an implementation request. Check internal consistency and a few consequential paths; do not run unrelated suites or expand tests for hypothetical completeness. One fresh-context plan-only trial is the proposed usability check. Do not claim it happened from a same-author walkthrough, or claim measured savings, universal compatibility or production readiness.
+Separate maintaining this kit from using it in another app. These contributor instructions govern changes to AppLift; they do not replace the consuming host's instructions. The skill and selected specs supply consumer guidance. When implementation is requested, continue from the short mapping through implementation and relevant checks within that authorization; do not create an artificial plan-only stopping point.
 
-Retire irrelevant code from the recommended path. Preserve historical evidence; no broad deletion or host cleanup is implied. Do not create more specs, tooling or benchmark programs unless an observed use case needs them. External-service OAuth and background-effect specs remain conditional.
+Evaluate actual supported behavior. A plan-only trial demonstrates mapping quality; a successful implementation attempt demonstrates only its tested case. Keep simulated-provider evidence distinct from live provider acceptance. Record business clarification separately from maintainer engineering rescue. Do not claim measured savings, universal compatibility or production readiness without corresponding evidence.
+
+Retire irrelevant code from the recommended path. Preserve historical evidence; no broad deletion or host cleanup is implied. Customer-owned connections and background processing are now supported contracts because the personal-email-app transition needs them. Deeper token expenditure is authorized for this increment; extra abstractions and speculative scope are not. Stop after the bounded attempt passes the relevant checks, preserving existing behavior without maintainer engineering rescue. Fix observed failures before expanding.
 
 ## Protected boundaries
 

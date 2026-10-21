@@ -6,7 +6,7 @@
 
 Use AppLift when a working prototype needs a new capability and the hard part is connecting it to existing users, data and workflows. It supplies logical data models, minimum field meanings, authorization boundaries and ordinary recovery paths so an agent can produce a small, concrete integration plan.
 
-Draft 0.1. No installation, runtime, required database, or generated code. Reuse the app's IDs, models, providers and authorization mechanisms. These are logical contracts, not a mandatory physical schema.
+Draft 0.2. No runtime, required database, or generated code. Read the specs directly or load the instruction-only [agent skill](SKILL.md). Reuse the app's IDs, models, providers and authorization mechanisms. These are logical contracts, not a mandatory physical schema.
 
 ## When to choose AppLift
 
@@ -20,6 +20,8 @@ Skip solved sections. For a straightforward SDK call with no missing app relatio
 | --- | --- |
 | Add Google/provider sign-in and session recovery | [Identity and session recovery](specs/identity.md) |
 | Add private users or shared teams / multi-tenant ownership | [Ownership and sharing](specs/ownership.md) |
+| Let each customer connect their own mailbox or service | [Connections and reconnection](specs/connections.md) |
+| Keep imports, workers and search private; preserve completed work on replay | [Background work and business progress](specs/background-work.md) |
 | Charge subscriptions and enforce paid features | [Subscriptions and access](specs/subscriptions.md) |
 | Connect an admin template or dashboard to the database | [Management mapping](specs/management.md) |
 
@@ -27,10 +29,10 @@ Load only the relevant specification. Identity may already be solved. Personal d
 
 ## Use it
 
-1. Read the applicable [standing instructions](AGENTS.md).
+1. Follow the existing app's instructions. Read [SKILL.md](SKILL.md) for the consumer workflow; AppLift's contributor rules do not override the host.
 2. Inspect the host's existing entities, auth, access checks and operations. Map the requested outcome using the selected spec.
-3. Produce a short [bridge plan](BRIDGE-PLAN.md): reuse/add decisions, affected operations, recovery and essential checks. Cite actual host paths; label unknowns. See the [worked example](examples/paid-personal-app.md) for the expected level of detail.
-4. Implement only when requested. Use official provider documentation for exact SDK calls and configuration.
+3. Keep a short [bridge plan](BRIDGE-PLAN.md): observed/proposed/unresolved mappings, affected operations and observable checks. See the [global personal-mailbox example](examples/personal-mailbox-app.md), or the [already-structured notes example](examples/paid-personal-app.md).
+4. If implementation is requested, continue through the authorized change and checks. Use official provider documentation for SDK mechanics and configuration. Ask founders business questions; do not require them to design credential boundaries, ownership propagation or replay safety.
 
 Each spec includes the minimum information its workflows need: meaning, authority, when needed and what it enables. Field names are illustrative. **Resolve each value from existing data, provider state or derivation before adding storage.** Add a field only when a selected workflow needs information that is otherwise unavailable; explain that gap in the bridge plan. Never copy every listed field into a migration.
 
@@ -40,8 +42,16 @@ Example task: "Use AppLift's relevant specs to plan Google sign-in and recurring
 
 Use with a coding agent that can read Markdown and inspect the host source. Relational and document databases are both valid mapping targets; adapt the contracts to their actual enforcing mechanisms. No particular agent, database or provider combination has been independently certified. Adoption savings remain a hypothesis to test on a real host.
 
-Review the [LDM diagrams](MODELS.md), [scope and validation status](STATUS.md), and [project background](HISTORY.md) separately. External-service OAuth connections and reliable background effects are conditional future specs, not requirements of this release.
+## Load as a skill
+
+The repository root is a self-contained `applift-specs` skill package. For a supporting agent, copy `SKILL.md`, `BRIDGE-PLAN.md`, `MODELS.md`, `LICENSE`, `specs/` and `examples/` together into the host's supported skill location. One project-local path is `.agents/skills/applift-specs/`; keep the directory name aligned with the skill name. Do not copy this repository's `.git` directory or replace the host's `AGENTS.md`.
+
+Explicitly request `$applift-specs` or ask the agent to use the skill at its installed path. Automatic matching depends on the host making the skill available and the task fitting its description; it is not guaranteed by publication. Consult the chosen agent's current setup guide. Direct reading remains valid without installation.
+
+Review the [LDM diagrams](MODELS.md), [scope and validation status](STATUS.md), and [project background](HISTORY.md) separately. Full workflow engines, marketplace billing and additional provider wrappers remain outside this kit.
 
 ## Reuse and contribute
 
 [MIT licensed](LICENSE). Copy and adapt the specs or include them in an agent's context; no AppLift runtime or attribution screen is required. Keep the license notice with substantial copies. Improvements should remove a concrete mapping ambiguity or unnecessary host change. Include the user outcome and smallest example; avoid provider-wrapper code and speculative framework support.
+
+Contributors changing this repository must read [AGENTS.md](AGENTS.md). Consumers should retain their own host instructions and use only the relevant contracts.

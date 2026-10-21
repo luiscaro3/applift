@@ -69,6 +69,21 @@ flowchart LR
 
 Map fields, pagination, scoped totals and allowed actions to native operations. Where the operation is paid, also apply the subscription policy. **Zero new domain entities.** [Contract](specs/management.md).
 
+## Connections and background work
+
+```mermaid
+flowchart LR
+    O[Existing user or workspace] --> C[Service connection]
+    C --> S[Imported source identity]
+    S --> B[Existing business record]
+    B --> I[Search or index result]
+    W[Existing background operation] --> C
+```
+
+The arrows describe how authority is resolved, not required owner columns or tables. A source identity can be fields on the business record; an index result can be derived. The worker resolves its connection's current owner and authority before committing. Provider account identity and credential reference belong to the connection contract, not every downstream record.
+
+**Imported facts may change; user-managed business progress survives replay.** For example, re-importing an email can refresh its subject while preserving the requisition's fulfilled state and manual notes. See [connections](specs/connections.md), [background work](specs/background-work.md) and the [global personal-app example](examples/personal-mailbox-app.md).
+
 ## Simplicity decisions
 
 | Concept | Default disposition |
