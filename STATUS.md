@@ -17,13 +17,15 @@ The docs are intended to save host-mapping decisions rather than replace provide
 
 Author review checked field authority, relationship/workflow consistency, optional storage and recovery paths. Relative documentation links and image references were checked locally. The worked example is hypothetical and was not executed. Mermaid source is supplied; a successful rendering test is not claimed.
 
-An independent fresh-context implementation trial has not yet completed for this revision. There are no measured time/token savings, universal compatibility or production-readiness claims. Real provider acceptance is separate from reviewing or using these contracts. Basic skill metadata/reference checks do not establish implicit activation or good decisions.
+One fresh-context implementation attempt passed for a representative global personal Node/SQLite backend with local provider simulators: [evidence and reproducible fixture](evidence/private-customer-trial.md). Seven implementer checks and nine held-out evaluator scenarios passed without maintainer engineering correction. The test used the explicitly supplied public kit; it does not demonstrate organic discovery, implicit skill activation, reduced effort, broad compatibility or production readiness. Live provider acceptance remains separate.
 
-## Next useful check
+Skill frontmatter/name and relative-reference checks passed, and its installed project-local copy was unchanged during the attempt. The bundled skill validator could not run because its Python environment lacked PyYAML; no validator pass is claimed. Explicit path loading was exercised, not automatic discovery.
 
-Use the public kit and a frozen, isolated personal host to implement private-customer access, customer-owned connections and background work. Start from an ordinary founder request; record business answers separately from engineering rescue. A plan-only trial validates mapping quality and does not establish successful integration. Local provider simulators can exercise the host's actual persistence and recovery paths but cannot prove live OAuth acceptance.
+## Stopping rule
 
-Success is the bounded implementation preserving old IDs, data and user-managed progress, enforcing privacy across affected operations and background work, and passing relevant checks without maintainer engineering rescue. One success demonstrates that tested case only. Fix observed gaps; stop before a broad benchmark or provider certification program.
+The planned bounded implementation attempt has completed. Its business choices and local provider interfaces were supplied in the host README; no additional business clarification or author engineering rescue was reported. A plan-only result would have supported mapping quality only. This result executes actual SQLite migration, service guards, imports, queue recovery and search in one fixture, while keeping external-provider behavior simulated.
+
+The submitted implementation preserved old IDs, data and user-managed progress and passed the affected private-access/background checks on first evaluation. Stop here unless another concrete host or observed failure justifies more work. Do not turn one success into a generalized compatibility claim or restart broad benchmarks/provider certification.
 
 ## Conditional scope
 

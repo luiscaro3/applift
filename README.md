@@ -40,7 +40,7 @@ The expected output is a host-specific plan naming existing fields/paths to reus
 
 Example task: "Use AppLift's relevant specs to plan Google sign-in and recurring paid access for this existing app. Inspect the host first, preserve IDs and native guards, map only missing information, and identify operator decisions. Produce a bridge plan before implementation."
 
-Use with a coding agent that can read Markdown and inspect the host source. Relational and document databases are both valid mapping targets; adapt the contracts to their actual enforcing mechanisms. No particular agent, database or provider combination has been independently certified. Adoption savings remain a hypothesis to test on a real host.
+Use with a coding agent that can read Markdown and inspect the host source. Relational and document databases are both valid mapping targets; adapt the contracts to their actual enforcing mechanisms. One [independent implementation attempt](evidence/private-customer-trial.md) passed for a representative SQLite backend with simulated providers and no maintainer engineering correction. This is bounded evidence, not provider certification or measured adoption savings.
 
 ## Load as a skill
 
