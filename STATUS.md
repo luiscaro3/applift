@@ -21,6 +21,8 @@ One fresh-context implementation attempt passed for a representative global pers
 
 Skill frontmatter/name and relative-reference checks passed, and its installed project-local copy was unchanged during the attempt. The bundled skill validator could not run because its Python environment lacked PyYAML; no validator pass is claimed. Explicit path loading was exercised, not automatic discovery.
 
+A subsequent [existing-host subscription pilot](evidence/scout-subscription-pilot.md) reached a checked local candidate with two maintainer corrections. It observed filesystem discovery/use of the installed kit, not native implicit activation. Real transaction/provider acceptance remains incomplete; the earlier passing fixture does not close those gaps. The observed transaction-boundary omission was clarified in the subscription spec.
+
 ## Stopping rule
 
 The planned bounded implementation attempt has completed. Its business choices and local provider interfaces were supplied in the host README; no additional business clarification or author engineering rescue was reported. A plan-only result would have supported mapping quality only. This result executes actual SQLite migration, service guards, imports, queue recovery and search in one fixture, while keeping external-provider behavior simulated.

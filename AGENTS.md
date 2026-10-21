@@ -25,7 +25,7 @@ Separate maintaining this kit from using it in another app. These contributor in
 
 Evaluate actual supported behavior. A plan-only trial demonstrates mapping quality; a successful implementation attempt demonstrates only its tested case. Keep simulated-provider evidence distinct from live provider acceptance. Record business clarification separately from maintainer engineering rescue. Do not claim measured savings, universal compatibility or production readiness without corresponding evidence.
 
-Retire irrelevant code from the recommended path. Preserve historical evidence; no broad deletion or host cleanup is implied. Customer-owned connections and background processing are now supported contracts because the personal-email-app transition needs them. Deeper token expenditure is authorized for this increment; extra abstractions and speculative scope are not. Stop after the bounded attempt passes the relevant checks, preserving existing behavior without maintainer engineering rescue. Fix observed failures before expanding.
+Retire irrelevant code from the recommended path. Preserve historical evidence; no broad deletion or host cleanup is implied. Customer-owned connections and background processing are supported contracts because the personal-email-app transition needs them. Use the least engineering and tokens needed for the current outcome; reuse applicable partial work and evidence. A prior deeper trial budget is not standing permission for extra abstractions or speculative scope. Stop after the bounded attempt passes the relevant checks, preserving existing behavior without maintainer engineering rescue. Record any correction if that goal was not met. Fix observed failures before expanding.
 
 ## Protected boundaries
 

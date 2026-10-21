@@ -39,6 +39,8 @@ Missing a business policy is a decision to resolve, not a reason to add another 
 - Store only facts the app needs locally. A small access projection may include capability, effective access end and last verification; it is a cache/decision, not a second billing ledger. Choose acceptable freshness and outage behavior for the actual paid action.
 - A free user has no paid subscription. Keep ordinary ownership authorization independent from paid access. Payment never grants another workspace's membership.
 
+Fetch provider facts outside retryable database transactions. In a short local commit, recheck the owner/mapping and the projection revision used for that fetch; discard or retry a result whose context changed. Use native conditional writes or transaction checks, not a new workflow engine. A local transaction cannot make the provider's remote state atomic with app access.
+
 ## Workflow contract
 
 | Trigger / actor | Authority and local effect | Repeat or recovery / user outcome |
