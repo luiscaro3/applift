@@ -4,7 +4,9 @@
 
 **LLM-first integration specs for adding authentication, multi-user access, subscriptions and admin dashboards to existing apps.**
 
-Use AppLift when a working prototype needs a new capability and the hard part is connecting it to existing users, data and workflows. It supplies logical data models, minimum field meanings, authorization boundaries and ordinary recovery paths so an agent can produce a small, concrete integration plan.
+**Keep your existing app and chosen providers.** AppLift supplies short design contracts for connecting authentication, customer ownership, subscriptions and background work to the entities and workflows you already have. Read only the relevant spec; no package installation or runtime dependency is required.
+
+For example, Stripe explains how to create a subscription. AppLift helps map that subscription to the existing customer, decide which operations require paid access, and preserve correct behavior during cancellation, retries and membership changes. Use it alongside your provider's official documentation.
 
 Draft 0.2. No runtime, required database, or generated code. Read the specs directly or load the instruction-only [agent skill](SKILL.md). Reuse the app's IDs, models, providers and authorization mechanisms. These are logical contracts, not a mandatory physical schema.
 
