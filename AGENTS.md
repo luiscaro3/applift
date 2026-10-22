@@ -10,6 +10,8 @@ Before adding anything, name the concrete user transition and design decision it
 
 Describe needed relationships, authority and workflow guarantees; leave physical implementation and any necessary host repair to the consuming agent. Do not turn the kit into a general architecture repair manual or mandatory redesign process. One-contract adoption and the host's existing working notes are sufficient when they cover the requested boundary.
 
+Target the transition from MVP to an early operating startup. Comprehensive observability platforms, disaster-recovery programs and enterprise governance are outside default scope, not a missing backlog. Assess usefulness against the selected transition rather than enterprise completeness. Preserve authorization, customer isolation, business data and ordinary recovery; flag concrete host requirements without turning them into a mandatory maturity program or a claim that the whole app is ready to operate.
+
 ## Design rules
 
 - Preserve native entities, IDs, data and guards. Each logical box must say whether it is reused, provider-owned, derived or genuinely missing. A box does not mandate a table.

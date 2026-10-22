@@ -10,6 +10,10 @@ For example, Stripe explains how to create a subscription. AppLift helps map tha
 
 Draft 0.2. No runtime, required database, or generated code. Read the specs directly or load the instruction-only [agent skill](SKILL.md). Reuse the app's IDs, models, providers and authorization mechanisms. These are logical contracts, not a mandatory physical schema.
 
+**Lifecycle focus: MVP to an early operating startup.** AppLift helps add the customer access, connections, paid features and workflows needed for that next step. A comprehensive observability platform, disaster-recovery program or enterprise governance framework is outside its default scope; their absence alone is not a reason to reject the kit for a bounded integration.
+
+Authorization, customer isolation, preservation of business data and ordinary workflow recovery still matter at this stage. Flag additional operational needs when the actual app requires them; leave their implementation to the host. AppLift adoption does not certify that the whole product is ready to operate or sell.
+
 ## One small bridge
 
 Illustrative request: "Let other customers connect their own mailbox. Keep their work private and don't reset fulfilled requisitions."

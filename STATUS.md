@@ -13,6 +13,8 @@ Draft 0.2, 21 October 2026. A specification kit with zero product runtime code o
 
 The docs are intended to save host-mapping decisions rather than replace provider SDK instructions. No mandatory schema, Store interface, role system, ORM or code generator is supplied.
 
+The intended lifecycle is MVP to an early operating startup. This kit is not a complete SaaS operating model or enterprise-readiness checklist. Comprehensive observability, disaster-recovery programs and enterprise governance are outside default scope; their absence does not invalidate a selected integration contract. Basic authorization, customer isolation, data preservation and ordinary recovery remain part of the relevant contracts. Additional operational needs belong to the actual host and use case. This scope choice is not a claim that early startups never need monitoring, backups or stronger controls, nor that adopting AppLift makes a whole product ready to sell.
+
 ## Evidence and limits
 
 Author review checked field authority, relationship/workflow consistency, optional storage and recovery paths. Relative documentation links and image references were checked locally. The worked example is hypothetical and was not executed. Mermaid source is supplied; a successful rendering test is not claimed.

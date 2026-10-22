@@ -10,6 +10,8 @@ Follow the user's request and the host's own instructions. This skill supplies i
 
 Use one relevant contract if that is enough; skip solved decisions. AppLift describes relationships, authority and workflow guarantees. Choose the implementation from the actual host; the kit does not prescribe a stack, physical schema or general architecture repair process.
 
+Target MVP-to-startup needs. Comprehensive observability, disaster-recovery and enterprise governance programs are outside default scope. Keep the selected workflow's authorization, isolation, data preservation and recovery intact; raise additional operational needs only where the host requires them. The kit does not certify whole-product readiness.
+
 Inspect existing entities, IDs, auth, global credentials, queries and background operations. Mark mappings observed, proposed or unresolved. Ask the user business questions in ordinary language; derive engineering details from the host and selected contracts rather than asking the founder to design ownership or retry logic.
 
 Read only the relevant contracts:
