@@ -10,6 +10,8 @@
 
 Draft 0.2. Instruction-only specs and an optional agent skill; no runtime dependency, required database or generated code.
 
+The logical models are designed to map onto existing relational or document databases using their native mechanisms. SQLite and Firestore below identify trial environments, not required technologies; those trials do not establish compatibility with every database.
+
 ## Start here
 
 Read the relevant spec from the table below, or install the skill from your consuming project with the optional [Skills CLI](https://skills.sh/docs/cli):
