@@ -34,6 +34,7 @@ Explicitly request `$applift-specs` or ask the agent to read [SKILL.md](SKILL.md
 | Keep imports, workers and search private; preserve completed work on replay | [Background work and business progress](specs/background-work.md) |
 | Charge subscriptions and enforce paid features | [Subscriptions and access](specs/subscriptions.md) |
 | Connect an admin template or dashboard to the database | [Management mapping](specs/management.md) |
+| Respect email unsubscribe, privacy choices or required terms acceptance | [User choices](specs/user-choices.md), only where the workflow needs it |
 
 Use one contract if that is enough; skip solved decisions. AppLift describes relationships, authority and workflow guarantees. The agent chooses implementation from the actual app. No whole-kit adoption or general redesign is required; personal data does not need workspaces by default.
 

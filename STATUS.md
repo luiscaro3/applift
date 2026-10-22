@@ -5,6 +5,7 @@ Draft 0.2, 21 October 2026. A specification kit with zero product runtime code o
 ## Available
 
 - Six contracts: identity/session recovery, personal/shared ownership, customer-owned connections/reconnection, background processing/business progress, subscriptions/access and management-screen mapping.
+- Optional [user-choice contract](specs/user-choices.md), added October 22, 2026: email suppression across imports/queued sends, privacy-choice enforcement and conditional terms acceptance. Reviewed against linked official US guidance; no host implementation trial or legal-compliance validation is claimed for this addition.
 - Logical relationship diagrams, workflow-local field guidance and conditional recovery information.
 - A short bridge-plan template with observed/proposed/unresolved mappings and requirement-to-operation checks; examples for both a global personal mailbox app and an already-structured notes app.
 - A self-contained instruction-only skill with one documented project-local loading path. Contributor instructions are separate from consumer guidance.

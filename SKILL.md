@@ -22,6 +22,7 @@ Read only the relevant contracts:
 - Workers, source replay, search and preservation of fulfillment/manual progress: [background work](specs/background-work.md).
 - Recurring paid access: [subscriptions](specs/subscriptions.md).
 - Existing template/dashboard to authorized backend: [management](specs/management.md).
+- Email unsubscribe, tracking/privacy choices or required terms acceptance: [user choices](specs/user-choices.md), only when affected. Reuse provider controls; this is not legal compliance certification.
 
 Reuse IDs, native guards and provider-managed state. Resolve ownership through existing parents when possible; no owner column at every step, team model, role engine or mirrored billing ledger by default. A repeated import must preserve user-managed business progress. Re-evaluate current authority before committing delayed results.
 

@@ -52,6 +52,7 @@ jobs:
               'specs/identity.md', 'specs/ownership.md',
               'specs/connections.md', 'specs/background-work.md',
               'specs/subscriptions.md', 'specs/management.md',
+              'specs/user-choices.md',
               'examples/personal-mailbox-app.md', 'examples/paid-personal-app.md',
           }
           with tarfile.open(sys.argv[1], 'r:gz') as archive:
@@ -60,7 +61,7 @@ jobs:
           missing = required - files
           if missing:
               raise SystemExit('Missing packaged resources: ' + ', '.join(sorted(missing)))
-          print('Verified all 12 required skill resources in archive')
+          print(f'Verified all {len(required)} required skill resources in archive')
           PY
       - name: Check publication without publishing
         run: tessl plugin publish . --dry-run --skip-evals --workspace ws-01a163a1584877afbb3893e6c7dafc5e
