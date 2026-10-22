@@ -10,6 +10,20 @@ For example, Stripe explains how to create a subscription. AppLift helps map tha
 
 Draft 0.2. No runtime, required database, or generated code. Read the specs directly or load the instruction-only [agent skill](SKILL.md). Reuse the app's IDs, models, providers and authorization mechanisms. These are logical contracts, not a mandatory physical schema.
 
+## One small bridge
+
+Illustrative request: "Let other customers connect their own mailbox. Keep their work private and don't reset fulfilled requisitions."
+
+Suppose the app already links requisitions to campaigns and campaigns to customers, but uses one shared mailbox:
+
+| Existing app | Design decision supplied by AppLift |
+| --- | --- |
+| `requisition -> campaign -> customer` | Resolve ownership through that path and enforce it on affected backend reads/writes; avoid copying an owner field everywhere. |
+| One shared mailbox | Associate each customer's authorized connection with their imports and delayed jobs; never fall back to the founder's connection. |
+| Imports can encounter the same email again | Refresh imported facts while preserving fulfillment status and manual notes. |
+
+The agent chooses how to implement these boundaries in the host. Read [ownership](specs/ownership.md), [connections](specs/connections.md) or [background work](specs/background-work.md) only where a decision is missing. This is an illustrative mapping, not a measured savings claim; see the [full example](examples/personal-mailbox-app.md) for a different starting point without existing ownership.
+
 ## When to choose AppLift
 
 Choose it when provider instructions explain the API but leave the host design unresolved: which user owns existing records, who receives paid access, where a protected operation is authorized, or what happens after session expiry or payment failure. AppLift connects those decisions across the app and provider.
@@ -27,18 +41,18 @@ Skip solved sections. For a straightforward SDK call with no missing app relatio
 | Charge subscriptions and enforce paid features | [Subscriptions and access](specs/subscriptions.md) |
 | Connect an admin template or dashboard to the database | [Management mapping](specs/management.md) |
 
-Load only the relevant specification. Identity may already be solved. Personal data does not need workspaces. A dashboard does not need a second data model.
+Use one contract if that is enough; skip solved decisions. AppLift defines relationships and workflow guarantees, while the agent chooses implementation from the actual app. No whole-kit adoption or general redesign is required. Identity may already be solved; personal data does not need workspaces.
 
 ## Use it
 
 1. Follow the existing app's instructions. Read [SKILL.md](SKILL.md) for the consumer workflow; AppLift's contributor rules do not override the host.
 2. Inspect the host's existing entities, auth, access checks and operations. Map the requested outcome using the selected spec.
-3. Keep a short [bridge plan](BRIDGE-PLAN.md): observed/proposed/unresolved mappings, affected operations and observable checks. See the [global personal-mailbox example](examples/personal-mailbox-app.md), or the [already-structured notes example](examples/paid-personal-app.md).
+3. Keep needed mappings, affected operations and observable checks in the host's working notes or the short [bridge plan](BRIDGE-PLAN.md). See the [global personal-mailbox example](examples/personal-mailbox-app.md), or the [already-structured notes example](examples/paid-personal-app.md).
 4. If implementation is requested, continue through the authorized change and checks. Use official provider documentation for SDK mechanics and configuration. Ask founders business questions; do not require them to design credential boundaries, ownership propagation or replay safety.
 
 Each spec includes the minimum information its workflows need: meaning, authority, when needed and what it enables. Field names are illustrative. **Resolve each value from existing data, provider state or derivation before adding storage.** Add a field only when a selected workflow needs information that is otherwise unavailable; explain that gap in the bridge plan. Never copy every listed field into a migration.
 
-The expected output is a host-specific plan naming existing fields/paths to reuse, the genuinely missing associations, affected queries/commands/screens, recovery behavior and essential checks. For example, if a note's owner is already available through its project, preserve that path instead of adding another owner column or a team model.
+Mapping is a working note, not an additional approval ceremony. For a planning request, provide the plan; for an authorized implementation, carry it through the bounded change and relevant checks.
 
 Example task: "Use AppLift's relevant specs to plan Google sign-in and recurring paid access for this existing app. Inspect the host first, preserve IDs and native guards, map only missing information, and identify operator decisions. Produce a bridge plan before implementation."
 
@@ -47,6 +61,14 @@ Use with a coding agent that can read Markdown and inspect the host source. Rela
 ## Load as a skill
 
 The repository root is a self-contained `applift-specs` skill package. For a supporting agent, copy `SKILL.md`, `BRIDGE-PLAN.md`, `MODELS.md`, `LICENSE`, `specs/` and `examples/` together into the host's supported skill location. One project-local path is `.agents/skills/applift-specs/`; keep the directory name aligned with the skill name. Do not copy this repository's `.git` directory or replace the host's `AGENTS.md`.
+
+With the optional [Skills CLI](https://skills.sh/docs/cli), run from the consuming project:
+
+```sh
+npx skills add luiscaro3/applift --skill applift-specs --agent codex
+```
+
+Replace `codex` with your supported agent, such as `claude-code`. The CLI is an installation tool, not an AppLift runtime dependency. Preview the available skill with `npx skills add luiscaro3/applift --list` before installing. Installation does not guarantee automatic selection.
 
 Explicitly request `$applift-specs` or ask the agent to use the skill at its installed path. Automatic matching depends on the host making the skill available and the task fitting its description; it is not guaranteed by publication. Consult the chosen agent's current setup guide. Direct reading remains valid without installation.
 

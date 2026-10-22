@@ -8,6 +8,8 @@ Help an LLM connect a requested capability to an existing app's entities, owners
 
 Before adding anything, name the concrete user transition and design decision it saves. If reading and adapting it costs more than using the provider's own instructions, simplify or omit it. Partial useful adoption is enough. Stop when the narrow outcome is clear; do not pursue exhaustive coverage or unmeasured perfection.
 
+Describe needed relationships, authority and workflow guarantees; leave physical implementation and any necessary host repair to the consuming agent. Do not turn the kit into a general architecture repair manual or mandatory redesign process. One-contract adoption and the host's existing working notes are sufficient when they cover the requested boundary.
+
 ## Design rules
 
 - Preserve native entities, IDs, data and guards. Each logical box must say whether it is reused, provider-owned, derived or genuinely missing. A box does not mandate a table.

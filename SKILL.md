@@ -1,12 +1,14 @@
 ---
 name: applift-specs
-description: Grow an existing personal app into private customer access. Use when adding sign-in, customer-owned data or connections, background imports, subscriptions, or an admin screen to existing code and the missing work is mapping ownership and workflows. Skip unrelated app creation and straightforward SDK calls whose host mapping is already solved.
+description: Turn an existing personal app into a multi-user SaaS or add private customer access. Use when sign-in, multi-tenant data isolation, customer-owned connections, background imports, subscriptions or admin screens need mapping to existing entities and workflows. Skip new-app scaffolding and SDK calls whose host mapping is already solved.
 license: MIT
 ---
 
 # Apply AppLift to an existing app
 
 Follow the user's request and the host's own instructions. This skill supplies integration guidance; AppLift's contributor `AGENTS.md` does not replace the host's rules. Use normal provider documentation/SDKs for mechanics. No AppLift runtime is needed.
+
+Use one relevant contract if that is enough; skip solved decisions. AppLift describes relationships, authority and workflow guarantees. Choose the implementation from the actual host; the kit does not prescribe a stack, physical schema or general architecture repair process.
 
 Inspect existing entities, IDs, auth, global credentials, queries and background operations. Mark mappings observed, proposed or unresolved. Ask the user business questions in ordinary language; derive engineering details from the host and selected contracts rather than asking the founder to design ownership or retry logic.
 
@@ -23,6 +25,6 @@ Reuse IDs, native guards and provider-managed state. Resolve ownership through e
 
 Preserve native/provider defaults unless a concrete requirement justifies an override. State the reason for each custom setting; omit unnecessary configuration.
 
-Use the short [bridge plan](BRIDGE-PLAN.md) as a working note: connect each consequential requirement to a host operation and observable check. For a planning request, identify changes and unknowns. When implementation is requested, continue through the bounded changes and checks within authorization. Preserve existing data/behavior and record business clarifications separately from engineering rescue.
+Keep any needed mapping in the short [bridge plan](BRIDGE-PLAN.md) or the host's existing working notes: connect each consequential requirement to a host operation and observable check. This is not an extra approval step. For a planning request, identify changes and unknowns. When implementation is requested, continue through the bounded changes and checks within authorization. Preserve existing data/behavior and record business clarifications separately from engineering rescue.
 
 Consult [relationship diagrams](MODELS.md) or the [global personal-app example](examples/personal-mailbox-app.md) only if the mapping remains unclear. Report implemented versus unrun behavior and simulated versus live provider evidence. One passing case does not establish broad compatibility, organic discovery or reduced effort.

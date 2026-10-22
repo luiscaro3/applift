@@ -1,6 +1,6 @@
 # A small host-specific bridge plan
 
-Fill this in for the requested capability. Use actual paths and existing names. Omit irrelevant sections; stop before implementation unless requested.
+Use this optional structure or the host's existing working notes for the requested capability. Use actual paths and existing names. Omit irrelevant sections; stop before implementation unless requested. This template adds no approval step and does not prescribe the host's architecture.
 
 1. **Outcome and fit:** requested user behavior; relevant spec; existing mechanisms that already solve part of it.
 2. **Mapping:** mark each mapping **observed** (inspected source/evidence), **proposed** (a change), or **unresolved** (missing fact/decision). For selected workflow values only, write `meaning -> actual host field/path, provider source or derivation -> authority -> workflow that needs it`. Add storage only for an identified gap; name that gap. Map relationships and the actual backend authorization boundary. Do not reproduce the full spec's field list.
