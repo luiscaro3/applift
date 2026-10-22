@@ -2,9 +2,9 @@
 
 <img src="assets/applift-logo.png" alt="AppLift" width="720">
 
-**LLM-first integration specs for adding authentication, multi-user access, subscriptions and admin dashboards to existing apps.**
+**Architectural judgment for your coding agent-helping grow an MVP into a startup without unnecessary complexity.**
 
-**Keep your existing app and chosen providers.** AppLift supplies logical models and short design contracts for connecting new capabilities to existing users, data and workflows. Stripe explains how to create a subscription; AppLift helps map it to the customer and the operations paid access should unlock. Use it alongside official provider documentation when that host mapping is unresolved; skip it when the provider's short recipe already solves the task.
+**Keep your existing app and chosen providers.** AppLift's LLM-first specs connect authentication, multi-user access, subscriptions and admin dashboards to existing users, data and workflows. Stripe explains how to create a subscription; AppLift helps map it to the customer and the operations paid access should unlock. Use it alongside official provider documentation when that host mapping is unresolved; skip it when the provider's short recipe already solves the task.
 
 **Lifecycle focus: MVP to an early operating startup.** Comprehensive observability platforms, disaster-recovery programs and enterprise governance are outside default scope. Authorization, customer isolation, data preservation and ordinary workflow recovery still matter. Additional operational needs depend on the actual host; adopting AppLift does not certify whole-product readiness.
 
