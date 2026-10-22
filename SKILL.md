@@ -21,6 +21,8 @@ Read only the relevant contracts:
 
 Reuse IDs, native guards and provider-managed state. Resolve ownership through existing parents when possible; no owner column at every step, team model, role engine or mirrored billing ledger by default. A repeated import must preserve user-managed business progress. Re-evaluate current authority before committing delayed results.
 
+Preserve native/provider defaults unless a concrete requirement justifies an override. State the reason for each custom setting; omit unnecessary configuration.
+
 Use the short [bridge plan](BRIDGE-PLAN.md) as a working note: connect each consequential requirement to a host operation and observable check. For a planning request, identify changes and unknowns. When implementation is requested, continue through the bounded changes and checks within authorization. Preserve existing data/behavior and record business clarifications separately from engineering rescue.
 
 Consult [relationship diagrams](MODELS.md) or the [global personal-app example](examples/personal-mailbox-app.md) only if the mapping remains unclear. Report implemented versus unrun behavior and simulated versus live provider evidence. One passing case does not establish broad compatibility, organic discovery or reduced effort.

@@ -21,7 +21,7 @@ One fresh-context implementation attempt passed for a representative global pers
 
 Skill frontmatter/name and relative-reference checks passed, and its installed project-local copy was unchanged during the attempt. The bundled skill validator could not run because its Python environment lacked PyYAML; no validator pass is claimed. Explicit path loading was exercised, not automatic discovery.
 
-A subsequent [existing-host subscription pilot](evidence/scout-subscription-pilot.md) reached a checked local candidate with two maintainer corrections. It observed filesystem discovery/use of the installed kit, not native implicit activation. Real transaction/provider acceptance remains incomplete; the earlier passing fixture does not close those gaps. The observed transaction-boundary omission was clarified in the subscription spec.
+A subsequent [existing-host subscription pilot](evidence/scout-subscription-pilot.md) reached an assisted candidate with two maintainer corrections. Clean frozen installations, normal backend/frontend builds, focused checks and four actual Firestore emulator checks passed. It observed filesystem discovery/use of the installed kit, not native implicit activation. Browser, production database and real-provider acceptance remain unverified. The transaction-boundary omission was clarified in the subscription spec; consumer/contributor instructions now require a concrete reason before overriding native/provider defaults. No reduced-effort or causal-benefit claim is supported.
 
 ## Stopping rule
 

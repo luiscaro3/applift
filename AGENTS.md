@@ -17,6 +17,7 @@ Before adding anything, name the concrete user transition and design decision it
 - Reuse maintained auth, billing and delivery services. Explain their connection to host behavior. Do not build provider wrappers, a Store interface, ORM, generator, universal inference engine, custom DSL or new identity/payment infrastructure.
 - Keep actual authorization at the host's enforcing boundary. UI visibility and successful payment redirects are not authorization.
 - Use official documentation for provider mechanics. Do not duplicate rapidly changing API details in generic specs.
+- Preserve native/provider defaults unless a concrete requirement justifies an override. State the reason for each custom setting; omit unnecessary configuration.
 - Keep the entry point short. Read only the needed spec; historical roadmaps are evidence, not a backlog.
 
 ## Work and evidence
