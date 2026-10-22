@@ -1,8 +1,11 @@
 name: Publish AppLift to Tessl
 
-# Manual only: adding or updating this file never publishes automatically.
+# Push registers/checks the workflow; publishing requires manual dispatch.
 on:
   workflow_dispatch:
+  push:
+    branches: [master]
+    paths: [.github/workflows/tessl-publish.yml]
 
 permissions:
   contents: read
@@ -12,8 +15,16 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  registration:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 1
+    permissions: {}
+    steps:
+      - name: Confirm manual publishing boundary
+        run: echo 'Workflow registered. Publishing requires workflow_dispatch on master.'
   publish:
-    if: github.ref == 'refs/heads/master'
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/master'
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     permissions:
