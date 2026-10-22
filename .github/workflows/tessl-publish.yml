@@ -1,11 +1,11 @@
 name: Publish AppLift to Tessl
 
-# Push registers/checks the workflow; publishing requires manual dispatch.
+# Publish only trusted merged source or an explicit manual run on master.
 on:
   workflow_dispatch:
-  push:
+  pull_request_target:
+    types: [closed]
     branches: [master]
-    paths: [.github/workflows/tessl-publish.yml]
 
 permissions:
   contents: read
@@ -15,16 +15,11 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  registration:
-    if: github.event_name == 'push'
-    runs-on: ubuntu-24.04
-    timeout-minutes: 1
-    permissions: {}
-    steps:
-      - name: Confirm manual publishing boundary
-        run: echo 'Workflow registered. Publishing requires workflow_dispatch on master.'
   publish:
-    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/master'
+    if: >-
+      github.ref == 'refs/heads/master' &&
+      (github.event_name == 'workflow_dispatch' ||
+       (github.event_name == 'pull_request_target' && github.event.pull_request.merged == true))
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     permissions:
@@ -34,6 +29,8 @@ jobs:
       - name: Check out public source
         uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
+          # Never check out an unmerged PR head with the publishing secret.
+          ref: ${{ github.event.pull_request.merge_commit_sha || github.sha }}
           persist-credentials: false
       - name: Set up Tessl
         uses: tesslio/setup-tessl@25ec223fc0da33b41b8044ff5ab2b85235f4f91e # v2
@@ -64,6 +61,6 @@ jobs:
           print(f'Verified all {len(required)} required skill resources in archive')
           PY
       - name: Check publication without publishing
-        run: tessl plugin publish . --dry-run --skip-evals --workspace ws-01a163a1584877afbb3893e6c7dafc5e
+        run: tessl plugin publish . --dry-run --bump patch --skip-evals --workspace ws-01a163a1584877afbb3893e6c7dafc5e
       - name: Publish public plugin and link repository
-        run: tessl plugin publish . --skip-evals --workspace ws-01a163a1584877afbb3893e6c7dafc5e
+        run: tessl plugin publish . --bump patch --skip-evals --workspace ws-01a163a1584877afbb3893e6c7dafc5e
