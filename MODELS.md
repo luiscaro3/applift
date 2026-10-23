@@ -14,7 +14,7 @@ Every accepted identity/session belongs to one user. A legacy user can exist bef
 
 ## Ownership
 
-**Private personal data — start here when users do not share work.**
+**Private personal data - start here when users do not share work.**
 
 ```mermaid
 erDiagram
@@ -23,7 +23,7 @@ erDiagram
 
 Each protected resource has one owner, directly or through its existing parent. RESOURCE means an existing app entity, such as a project or note; it is not a generic resource table. Public data is handled explicitly outside this private slice.
 
-**Shared teams — use only when the app needs them.**
+**Shared teams - use only when the app needs them.**
 
 ```mermaid
 erDiagram
@@ -38,13 +38,12 @@ Each membership is one user/workspace pair. Use an existing team, account or pro
 
 ```mermaid
 erDiagram
-    ACCESS_OWNER ||--o{ SUBSCRIPTION : receives_access_from
-    PLAN ||--o{ SUBSCRIPTION : defines_offering
+    ACCESS_OWNER ||--o| CURRENT_SUBSCRIPTION : receives_access_from
 ```
 
-ACCESS_OWNER is the existing USER **or** WORKSPACE selected by the product; it is not an additional entity. One owner may have past subscriptions; this slice allows at most one current grant. The app owner is the merchant. The provider customer reference identifies the payer, who may be different from the access owner. If the host already models payers, reuse it; don't add a payer table just for this graph.
+ACCESS_OWNER is the existing USER **or** WORKSPACE selected by the product; it is not an additional entity. Each owner has zero or one current subscription; each current subscription belongs to one owner. Subscription history is optional only when the host needs it. The app owner is the merchant. The provider customer reference identifies the payer, who may be different from the access owner. If the host already models payers, reuse it; don't add a payer table just for this graph.
 
-PLAN can be configuration. SUBSCRIPTION is provider-owned; the host keeps a reference or only the facts its access decisions need. Capability policy plus verified subscription facts produces effective access, including a cutoff where applicable. **No separate entitlement table is required.** [Contract and field guidance](specs/subscriptions.md).
+The subscription is provider-owned; the host's canonical subscription representation retains the provider subscription ID, associated provider customer ID and chosen plan/price reference, directly or through existing durable relationships. Resolve the offering through existing configuration/provider state; many owners can use the same offering without a separate PLAN entity. Fixed provider/account/environment context may remain configuration. Reuse the host's subscription/payer mapping; no separate customer table or copied customer profile is required. Capability policy plus verified subscription facts produces effective access, including a cutoff where applicable. A zero-price subscription can qualify under app policy. **No separate entitlement table is required.** [Contract and field guidance](specs/subscriptions.md).
 
 ```mermaid
 flowchart LR
@@ -55,6 +54,20 @@ flowchart LR
 ```
 
 Both paid access and native data permission are required. The two inputs must be checked at the actual enforcing boundary; this diagram is not a replacement for that check.
+
+## Credits
+
+This optional view supports free accounts with credit-gated services; it does not require a subscription.
+
+```mermaid
+flowchart LR
+    G[Trusted grant or verified top-up] --> A[Available credits of existing user or workspace]
+    A --> C[Authorized service consumption]
+    O[Existing payment or job operation identity] --> G
+    O --> C
+```
+
+Available credits are host-owned state or a derivation from existing credit history. Grant and consumption describe effects on the existing owner's credits, not new required entities. Reuse payment/job records to recognize applied operations. Native atomic changes must prevent duplicate additions/debits and concurrent overdrawing. A separate wallet, ledger or billing engine is not required. External work still needs bounded recovery for uncertain results; a local transaction cannot make a paid remote effect atomic. [Contract and inline mapping](specs/credits.md).
 
 ## Management
 
@@ -67,7 +80,7 @@ flowchart LR
     C --> D[Existing app entities]
 ```
 
-Map fields, pagination, scoped totals and allowed actions to native operations. Where the operation is paid, also apply the subscription policy. **Zero new domain entities.** [Contract](specs/management.md).
+Map fields, pagination, scoped totals and allowed actions to native operations. Where the operation is gated, apply the product's chosen subscription or credit policy. **Zero new domain entities.** [Contract](specs/management.md).
 
 ## Connections and background work
 
@@ -93,7 +106,9 @@ The arrows describe how authority is resolved, not required owner columns or tab
 | Workspace and membership | Omit for personal data; reuse existing sharing model otherwise |
 | Access owner | A label for existing user/workspace, not new storage |
 | Subscription | Provider-owned; keep minimal host mapping/projection |
-| Plan and entitlement | Configuration and derived access unless host needs persistence |
+| Offering and entitlement | Existing plan/price reference and configured capability policy; access is derived |
+| Credit availability | Existing owner balance or derivation from existing credit history; optional |
+| Grant and consumption | Effects correlated through existing payment/job operations; no mandatory ledger |
 | Screen resources/actions | Adapt existing operations, no second database |
 
 No universal owner hierarchy, event bus, trigger framework, payment ledger or generalized role engine is implied. A concrete host can still need an extra record to preserve a real relationship; it must earn that addition in its bridge plan.

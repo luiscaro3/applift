@@ -1,6 +1,6 @@
 ---
 name: applift-specs
-description: Turn an existing personal app into a multi-user SaaS or add private customer access. Use when sign-in, multi-tenant data isolation, customer-owned connections, background imports, subscriptions or admin screens need mapping to existing entities and workflows. Skip new-app scaffolding and SDK calls whose host mapping is already solved.
+description: Turn an existing personal app into a multi-user SaaS or add private customer access. Use when sign-in, multi-tenant data isolation, customer-owned connections, background imports, subscriptions, service credits or admin screens need mapping to existing entities and workflows. Skip new-app scaffolding and SDK calls whose host mapping is already solved.
 license: MIT
 ---
 
@@ -20,11 +20,14 @@ Read only the relevant contracts:
 - Personal/private versus shared data, existing-owner assignment: [ownership](specs/ownership.md).
 - Each customer's external account and reconnection: [connections](specs/connections.md).
 - Workers, source replay, search and preservation of fulfillment/manual progress: [background work](specs/background-work.md).
-- Recurring paid access: [subscriptions](specs/subscriptions.md).
+- Provider subscriptions linked to existing users/workspaces: [subscriptions](specs/subscriptions.md).
+- Grant/load credits and consume them for services: [credits](specs/credits.md).
 - Existing template/dashboard to authorized backend: [management](specs/management.md).
 - Email unsubscribe, tracking/privacy choices or required terms acceptance: [user choices](specs/user-choices.md), only when affected. Reuse provider controls; this is not legal compliance certification.
 
 Reuse IDs, native guards and provider-managed state. Resolve ownership through existing parents when possible; no owner column at every step, team model, role engine or mirrored billing ledger by default. A repeated import must preserve user-managed business progress. Re-evaluate current authority before committing delayed results.
+
+Free accounts need no subscription by default. Use the subscription or credit contract only for the requested workflow; do not turn either into a mandatory monetization model.
 
 Preserve native/provider defaults unless a concrete requirement justifies an override. State the reason for each custom setting; omit unnecessary configuration.
 

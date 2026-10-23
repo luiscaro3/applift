@@ -1,11 +1,12 @@
 # Scope and evidence
 
-Draft 0.2, 21 October 2026. A specification kit with zero product runtime code or package dependencies. Isolated implementation-trial code is separate from this package.
+Draft 0.3, prepared 23 October 2026. A specification kit with zero product runtime code or package dependencies. Isolated implementation-trial code is separate from this package.
 
 ## Available
 
 - Six contracts: identity/session recovery, personal/shared ownership, customer-owned connections/reconnection, background processing/business progress, subscriptions/access and management-screen mapping.
 - Optional [user-choice contract](specs/user-choices.md), added October 22, 2026: email suppression across imports/queued sends, privacy-choice enforcement and conditional terms acceptance. Reviewed against linked official US guidance; no host implementation trial or legal-compliance validation is claimed for this addition.
+- Optional [credit contract](specs/credits.md): trusted grants, service consumption and retry-safe atomic credit changes on existing accounts/operations. No subscription requirement or mandatory ledger. Subscription guidance retains provider subscription/customer identifiers in the existing canonical mapping. The credit contract has no executed integration or production evidence; subscription evidence below does not validate credit consumption.
 - Logical relationship diagrams, workflow-local field guidance and conditional recovery information.
 - A short bridge-plan template with observed/proposed/unresolved mappings and requirement-to-operation checks; examples for both a global personal mailbox app and an already-structured notes app.
 - A self-contained instruction-only skill with one documented project-local loading path. Contributor instructions are separate from consumer guidance.
@@ -24,7 +25,9 @@ One fresh-context implementation attempt passed for a representative global pers
 
 Skill frontmatter/name and relative-reference checks passed, and its installed project-local copy was unchanged during the attempt. The bundled skill validator could not run because its Python environment lacked PyYAML; no validator pass is claimed. Explicit path loading was exercised, not automatic discovery.
 
-A subsequent [existing-host subscription pilot](evidence/scout-subscription-pilot.md) reached an assisted candidate with two maintainer corrections. Clean frozen installations, normal backend/frontend builds, focused checks and four actual Firestore emulator checks passed. It observed filesystem discovery/use of the installed kit, not native implicit activation. Browser, production database and real-provider acceptance remain unverified. The transaction-boundary omission was clarified in the subscription spec; consumer/contributor instructions now require a concrete reason before overriding native/provider defaults. No reduced-effort or causal-benefit claim is supported.
+A subsequent [existing-host subscription pilot](evidence/scout-subscription-pilot.md) reached an assisted candidate with two maintainer corrections. Clean frozen installations, normal backend/frontend builds, focused checks and four actual Firestore emulator checks passed. It observed filesystem discovery/use of the installed kit, not native implicit activation. That isolated pilot did not validate the browser, production database or actual provider delivery. The transaction-boundary omission was clarified in the subscription spec; consumer/contributor instructions now require a concrete reason before overriding native/provider defaults. No reduced-effort or causal-benefit claim is supported.
+
+A separate [deployed Scout subscription check](evidence/scout-subscription-pilot.md#deployed-scout-with-actual-stripe-sandbox), reported 23 October 2026, used actual Stripe sandbox Checkout and signed webhook synchronization against the deployed application. Card-free $0/month signup created a customer/subscription and paid $0 invoice. The canonical workspace mapping matched provider customer/subscription/price IDs and merchant/test context. Four webhook deliveries returned HTTP 200; activation allowed workspace access and immediate provider cancellation through the Stripe Dashboard persisted canceled state and revoked access in a fresh view. The release image passed 28/28 checks. This is deployed-host sandbox evidence, not live-mode billing, paid-customer adoption, unaided adoption or credit execution evidence.
 
 ## Stopping rule
 
