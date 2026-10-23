@@ -14,7 +14,7 @@ Every accepted identity/session belongs to one user. A legacy user can exist bef
 
 ## Ownership
 
-**Private personal data - start here when users do not share work.**
+**Private personal data — start here when users do not share work.**
 
 ```mermaid
 erDiagram
@@ -23,7 +23,7 @@ erDiagram
 
 Each protected resource has one owner, directly or through its existing parent. RESOURCE means an existing app entity, such as a project or note; it is not a generic resource table. Public data is handled explicitly outside this private slice.
 
-**Shared teams - use only when the app needs them.**
+**Shared teams — use only when the app needs them.**
 
 ```mermaid
 erDiagram
