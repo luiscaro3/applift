@@ -4,11 +4,11 @@
 
 **Architectural judgment for your coding agent-helping grow an MVP into a startup without unnecessary complexity.**
 
-**Keep your existing app and chosen providers.** AppLift's LLM-first specs connect authentication, multi-user access, subscriptions and admin dashboards to existing users, data and workflows. Stripe explains how to create a subscription; AppLift helps map it to the customer and the operations paid access should unlock. Use it alongside official provider documentation when that host mapping is unresolved; skip it when the provider's short recipe already solves the task.
+**Keep your existing app and chosen providers.** AppLift's LLM-first specs connect authentication, multi-user access, subscriptions, service credits and admin dashboards to existing users, data and workflows. Stripe explains how to create a subscription; AppLift helps map it to the customer and the operations paid access should unlock. Use it alongside official provider documentation when that host mapping is unresolved; skip it when the provider's short recipe already solves the task.
 
 **Lifecycle focus: MVP to an early operating startup.** Comprehensive observability platforms, disaster-recovery programs and enterprise governance are outside default scope. Authorization, customer isolation, data preservation and ordinary workflow recovery still matter. Additional operational needs depend on the actual host; adopting AppLift does not certify whole-product readiness.
 
-Draft 0.2. Instruction-only specs and an optional agent skill; no runtime dependency, required database or generated code.
+Draft 0.3. Instruction-only specs and an optional agent skill; no runtime dependency, required database or generated code.
 
 The logical models are designed to map onto existing relational or document databases using their native mechanisms. SQLite and Firestore below identify trial environments, not required technologies; those trials do not establish compatibility with every database.
 
@@ -32,11 +32,14 @@ Explicitly request `$applift-specs` or ask the agent to read [SKILL.md](SKILL.md
 | Add private users or shared teams / multi-tenant ownership | [Ownership and sharing](specs/ownership.md) |
 | Let each customer connect their own mailbox or service | [Connections and reconnection](specs/connections.md) |
 | Keep imports, workers and search private; preserve completed work on replay | [Background work and business progress](specs/background-work.md) |
-| Charge subscriptions and enforce paid features | [Subscriptions and access](specs/subscriptions.md) |
+| Link provider subscriptions to existing users/workspaces and app capabilities | [Subscriptions and access](specs/subscriptions.md) |
+| Load and consume service credits without requiring a subscription | [Credits](specs/credits.md) |
 | Connect an admin template or dashboard to the database | [Management mapping](specs/management.md) |
 | Respect email unsubscribe, privacy choices or required terms acceptance | [User choices](specs/user-choices.md), only where the workflow needs it |
 
 Use one contract if that is enough; skip solved decisions. AppLift describes relationships, authority and workflow guarantees. The agent chooses implementation from the actual app. No whole-kit adoption or general redesign is required; personal data does not need workspaces by default.
+
+Subscriptions and credits are optional workflows, not requirements for signup. Free accounts can use either, or neither; follow the app's actual product policy.
 
 ## One small bridge
 
@@ -63,7 +66,9 @@ Field names are semantic examples, not a migration checklist. **Resolve values f
 
 ## Evidence and limits
 
-A [Node/SQLite implementation attempt](evidence/private-customer-trial.md) passed with simulated providers and no maintainer engineering correction. An [existing-host Scout subscription pilot](evidence/scout-subscription-pilot.md) needed two corrections, then passed clean installation, normal builds, focused checks and four Firestore emulator checks. These are bounded observations, not proof of universal compatibility, live-provider acceptance, automatic activation or reduced effort.
+A [Node/SQLite implementation attempt](evidence/private-customer-trial.md) passed with simulated providers and no maintainer engineering correction. An [existing-host Scout subscription pilot](evidence/scout-subscription-pilot.md) needed two corrections, then passed clean installation, normal builds, focused checks and four Firestore emulator checks.
+
+A separate [deployed Scout check](evidence/scout-subscription-pilot.md#deployed-scout-with-actual-stripe-sandbox) completed actual $0 Stripe sandbox Checkout, canonical provider-ID linkage, signed webhook synchronization and app access revocation after provider cancellation. These are bounded observations, not live-mode billing, paid-customer adoption, broad compatibility, automatic activation or measured savings. Credits have no execution evidence.
 
 See [scope and validation status](STATUS.md), [logical-model diagrams](MODELS.md) and [project background](HISTORY.md) as needed. Full workflow engines, marketplace billing and additional provider wrappers remain outside this kit.
 

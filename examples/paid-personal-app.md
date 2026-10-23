@@ -22,7 +22,7 @@ These choices require product agreement in an actual host. They are not AppLift-
 | Session validity | Auth service's supported verifier | Attach verification to existing backend middleware; add no session table. |
 | Note owner | `note.project_id -> project.owner_id` | Reuse the project guard for list/detail/write/export. Add no `note.owner_id`. Validate parent selection on note creation/moves. |
 | Paid recipient | Existing user | Associate checkout with the server-authorized actor. No access-owner entity. |
-| Provider agreement | Provider-scoped subscription reference mapped to that user | Reuse an existing billing association if present. Otherwise retain the smallest recoverable association using trusted host storage or provider-supported server-controlled metadata. No full local billing ledger. |
+| Provider agreement | Canonical user-subscription record linked to that user | Retain provider subscription and customer IDs, scoped by provider/account/environment; fixed scope can stay in configuration. Reuse the existing association rather than create a second billing model. No full local billing ledger. |
 | Paid capability | One configured plan -> `export` | Configuration, not another catalog or entitlement table. |
 | Current export permission | Verified provider facts + the above policy | Derive access. Cache only if needed; retain verification time/cutoff with any cached decision. |
 | Dashboard values | Existing scoped project/note query | Map fields and totals. No new domain entities or global totals filtered in the browser. |

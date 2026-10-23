@@ -50,6 +50,7 @@ jobs:
               'specs/connections.md', 'specs/background-work.md',
               'specs/subscriptions.md', 'specs/management.md',
               'specs/user-choices.md',
+              'specs/credits.md',
               'examples/personal-mailbox-app.md', 'examples/paid-personal-app.md',
           }
           with tarfile.open(sys.argv[1], 'r:gz') as archive:

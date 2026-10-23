@@ -1,4 +1,6 @@
-# Existing-host subscription pilot: assisted candidate evidence
+# Scout subscription evidence
+
+## Historical isolated pilot: assisted candidate
 
 Updated 22 October 2026. An independently developed Scout source export was used in an isolated copy. The coordinator selected a workspace-subscription scenario; this was not an external adopter or demonstrated commercial demand.
 
@@ -19,3 +21,14 @@ The second correction also informs a general consumer/contributor rule: preserve
 Browser rendering, production Firestore and live Stripe acceptance remain unverified. Earlier Stripe sandbox results belong to their original host and are not transferred to this implementation. Private host code and raw local logs are not published with this summary.
 
 This is a maintainer-assisted local result, not successful unaided integration or a completed real-provider pilot. Token cost/savings were not measured. No broad compatibility, production readiness or causal benefit is claimed. Further work should follow a concrete adopter need and approved setup, not expand the test program to remove every qualification.
+
+## Deployed Scout with actual Stripe sandbox
+
+Reported 23 October 2026 from the separate Scout deployment receipt. Scout's deployed v1.1 application, developed using AppLift guidance, completed an actual Stripe **sandbox** subscription flow. This is separate from the historical isolated pilot above and the earlier internal Free membership, which did not create a Stripe subscription. It does not establish that the newly prepared specification caused the result.
+
+- Hosted Checkout created one $0/month recurring subscription and customer without collecting a card; the resulting $0 invoice was paid.
+- The canonical workspace subscription mapping matched provider customer, subscription and price identifiers, with merchant/test-mode context and app/workspace metadata. Active subscription state allowed workspace access.
+- Signed webhook synchronization passed with four provider deliveries returning HTTP 200, including immediate provider cancellation performed in the Stripe Dashboard. The application persisted canceled state with no remaining access eligibility and allowed account deletion under its policy. A fresh view denied workspace access; the empty account remained.
+- The deployed backend was healthy and receiving all traffic. The release image passed 28/28 checks. The obsolete internal Free plan was removed after dependency checks; working v1.0 was untouched by that release.
+
+This is a deployed real application using a real provider's sandbox, **not live-mode Stripe billing, paid-customer adoption or production certification**. There is no credit integration execution evidence or measured AppLift savings. Provider/account/customer identifiers, private host details and raw receipts are intentionally omitted from this public-facing summary. No additional provider test was performed to prepare it.
