@@ -58,7 +58,7 @@ An event ID dedup record is optional if effects already converge; email/other ir
 
 ## Decisions and essential checks
 
-Fill in: who can purchase/manage, access owner, plan-to-capability mapping, qualifying provider facts, free behavior, grace duration (including zero), cancel timing, access freshness and outage behavior. Trials and plan changes are additional branches only if the offering has them. Provider status names alone do not settle these business choices.
+Start with the [lifecycle defaults](lifecycle.md) for cancellation, expiry, queued work and separate account deletion; propose them and ask only about meaningful exceptions. Map who can purchase/manage, access owner, capabilities, qualifying provider facts and freshness/outage behavior to the host. Trials and plan changes are additional branches only if the offering has them. Provider status names alone do not settle these business choices.
 
 Operator owns product/price, portal, recovery and authenticated endpoint setup. Check verified activation grants the correct owner, browser spoofing/another owner is denied, and duplicate/reordered notification or reconciliation converges. Check failure -> policy-defined grace/end -> verified recovery with illustrative facts before any separately authorized provider run.
 
