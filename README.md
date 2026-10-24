@@ -41,6 +41,8 @@ Use one contract if that is enough; skip solved decisions. AppLift describes rel
 
 Subscriptions and credits are optional workflows, not requirements for signup. Free accounts can use either, or neither; follow the app's actual product policy.
 
+For cancellation, expiry, queued work or account deletion, start with the short [lifecycle defaults and checklist](specs/lifecycle.md). Propose a clear policy and ask only about meaningful exceptions.
+
 ## One small bridge
 
 Illustrative request: "Let other customers connect their own mailbox. Keep their work private and don't reset fulfilled requisitions."

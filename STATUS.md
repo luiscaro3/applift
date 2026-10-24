@@ -1,12 +1,13 @@
 # Scope and evidence
 
-Draft 0.3, prepared 23 October 2026. A specification kit with zero product runtime code or package dependencies. Isolated implementation-trial code is separate from this package.
+Draft 0.3, updated 24 October 2026. A specification kit with zero product runtime code or package dependencies. Isolated implementation-trial code is separate from this package.
 
 ## Available
 
 - Six contracts: identity/session recovery, personal/shared ownership, customer-owned connections/reconnection, background processing/business progress, subscriptions/access and management-screen mapping.
 - Optional [user-choice contract](specs/user-choices.md), added October 22, 2026: email suppression across imports/queued sends, privacy-choice enforcement and conditional terms acceptance. Reviewed against linked official US guidance; no host implementation trial or legal-compliance validation is claimed for this addition.
 - Optional [credit contract](specs/credits.md): trusted grants, service consumption and retry-safe atomic credit changes on existing accounts/operations. No subscription requirement or mandatory ledger. Subscription guidance retains provider subscription/customer identifiers in the existing canonical mapping. The credit contract has no executed integration or production evidence; subscription evidence below does not validate credit consumption.
+- A short [lifecycle decision guide and checklist](specs/lifecycle.md): recommended cancellation/expiry, credit eligibility, queued-work resumption and separate account-deletion policies. Configurable defaults, not a new framework or provider guarantee. No host execution evidence is claimed for this addition.
 - Logical relationship diagrams, workflow-local field guidance and conditional recovery information.
 - A short bridge-plan template with observed/proposed/unresolved mappings and requirement-to-operation checks; examples for both a global personal mailbox app and an already-structured notes app.
 - A self-contained instruction-only skill with one documented project-local loading path. Contributor instructions are separate from consumer guidance.

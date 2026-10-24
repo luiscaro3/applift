@@ -29,6 +29,8 @@ An existing **connection or parent resource identifies the owner** of the import
 
 For an external account change, do not relabel existing imported data as belonging to the new account. Keep stable source identity/history and apply an explicit replacement/import policy. Resolve new authorization independently of old queued work.
 
+For chargeable work, recheck eligibility at execution before side effects. Follow the [lifecycle defaults](lifecycle.md) when access or credits recover: publishing-like backlogs require explicit resume by default; harmless retries may follow the host's agreed automatic policy.
+
 ## Handoff and essential checks
 
 Identify actual importer, worker, business writes, index/search query and any direct/export path. Record which fields the source may update and which business progress must survive. Test the existing lifecycle with duplicate input, a post-commit retry, two customers with the same external source ID, and revocation during processing. Check only the paths affected by the requested transition; retain working unrelated behavior.

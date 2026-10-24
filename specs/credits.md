@@ -33,6 +33,6 @@ With 5 credits, two concurrent jobs costing 3 cannot both be accepted. The accep
 
 ## Decisions and essential checks
 
-Resolve owner, trusted grant sources, cost, charge timing and known-failure policy. Make charging on acceptance explicit; do not silently substitute it for a successful-delivery promise.
+Start with the [lifecycle defaults](lifecycle.md) for account access, insufficient credits and queued-work resumption. Resolve owner, trusted grant sources, cost, charge timing and known-failure policy. Make charging on acceptance explicit; do not silently substitute it for a successful-delivery promise.
 
 Check free signup without subscriptions, cross-owner denial, client amount manipulation, duplicate grants/consumption, concurrent overspending and interrupted external work. Use the selected provider's official payment/idempotency mechanisms. This spec supplies no runtime or credit execution evidence.

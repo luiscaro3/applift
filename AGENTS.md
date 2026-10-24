@@ -20,6 +20,7 @@ Target the transition from MVP to an early operating startup. Comprehensive obse
 - Pair relationships with ordinary workflows and recovery: trigger, authority, effect, repeat behavior and next action after failure.
 - Reuse maintained auth, billing and delivery services. Explain their connection to host behavior. Do not build provider wrappers, a Store interface, ORM, generator, universal inference engine, custom DSL or new identity/payment infrastructure.
 - Subscriptions and service credits are optional, separate workflows. Do not require subscriptions for free accounts or credit use, or introduce a general wallet/monetization framework.
+- For account/paid-capability lifecycle decisions, propose the small defaults in `specs/lifecycle.md` and ask only about meaningful product exceptions; keep authentication and ownership separate from paid eligibility.
 - Keep actual authorization at the host's enforcing boundary. UI visibility and successful payment redirects are not authorization.
 - Use official documentation for provider mechanics. Do not duplicate rapidly changing API details in generic specs.
 - Preserve native/provider defaults unless a concrete requirement justifies an override. State the reason for each custom setting; omit unnecessary configuration.

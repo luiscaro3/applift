@@ -27,7 +27,7 @@ Read only the relevant contracts:
 
 Reuse IDs, native guards and provider-managed state. Resolve ownership through existing parents when possible; no owner column at every step, team model, role engine or mirrored billing ledger by default. A repeated import must preserve user-managed business progress. Re-evaluate current authority before committing delayed results.
 
-Free accounts need no subscription by default. Use the subscription or credit contract only for the requested workflow; do not turn either into a mandatory monetization model.
+Free accounts need no subscription by default. Use the subscription or credit contract only for the requested workflow; do not turn either into a mandatory monetization model. When lifecycle behavior is involved, use the [recommended defaults and checklist](specs/lifecycle.md): separate sign-in/account activation from paid eligibility, propose the applicable default, and ask only about meaningful product exceptions.
 
 Preserve native/provider defaults unless a concrete requirement justifies an override. State the reason for each custom setting; omit unnecessary configuration.
 
