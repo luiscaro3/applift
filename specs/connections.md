@@ -2,6 +2,8 @@
 
 Use when each customer connects an external mailbox, calendar or similar service. App sign-in identifies the actor; service consent authorizes an external account. One does not substitute for the other. Reuse the host connector and maintained provider SDK.
 
+A valid provider grant permits scoped access; it does not make retrieved content trusted instructions. Embedded email/message/document commands cannot expand consent, choose another connection's credentials or redirect exports. Apply the [source-content boundary](background-work.md) while processing data through the authorized connection.
+
 ## Minimum logical model and information
 
 An existing **user or workspace owns a connection**. The connection identifies the external account and the approved grant used to access it. Existing imported records can inherit ownership through that connection. These are meanings, not required new tables; see [models](../MODELS.md#connections-and-background-work).

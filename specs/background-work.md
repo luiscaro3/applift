@@ -16,6 +16,8 @@ An existing **connection or parent resource identifies the owner** of the import
 
 **Invariant: reprocessing a source must not reset business progress.** Replaying a fulfilled requisition cannot turn it back into new. Update only imported fields that are actually authoritative and current; preserve user-managed fields unless an explicit authorized business action changes them. If a user can edit a normally imported field, establish its override/conflict rule instead of overwriting it on the next sync.
 
+**Source content is data, not authority.** Emails, messages and documents may contain indirect prompt injection. Keep their text separate from agent/worker instructions; extracting facts or summarizing it does not authorize embedded commands. The same boundary applies to derived summaries and search results. Resolve owners, credentials, permitted actions and export destinations from trusted host bindings and the authorized workflow, never source instructions. Validate extracted values before native operations; a prompt warning alone is not an access control.
+
 ## Workflow contract
 
 | Operation | Required connection | Ordinary failure / repeat behavior |
@@ -34,5 +36,7 @@ For chargeable work, recheck eligibility at execution before side effects. Follo
 ## Handoff and essential checks
 
 Identify actual importer, worker, business writes, index/search query and any direct/export path. Record which fields the source may update and which business progress must survive. Test the existing lifecycle with duplicate input, a post-commit retry, two customers with the same external source ID, and revocation during processing. Check only the paths affected by the requested transition; retain working unrelated behavior.
+
+Include one adversarial source alongside ordinary input: extraction/summarization still succeeds, while embedded instructions cannot switch credentials, cross ownership, trigger unauthorized effects or change an export destination. Check the affected tool/backend boundary, including replay; see the [mailbox example](../examples/personal-mailbox-app.md#consequential-requirements-and-observable-results).
 
 If the host has no identities/ownership yet, mark the new associations as proposed and obtain the original-owner decision before exposing existing data. Use [connections](connections.md) for account consent/reconnection and [ownership](ownership.md) for private/shared access. No AppLift worker runtime is required.
