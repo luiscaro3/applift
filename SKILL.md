@@ -21,8 +21,8 @@ Read only the relevant contracts:
 - Sign-in, local actor and session recovery: [identity](specs/identity.md).
 - Personal/private versus shared data, existing-owner assignment: [ownership](specs/ownership.md).
 - Each customer's external account and reconnection: [connections](specs/connections.md).
-- Workers, source replay, search and preservation of fulfillment/manual progress: [background work](specs/background-work.md).
-- Provider subscriptions linked to existing users/workspaces: [subscriptions](specs/subscriptions.md).
+- Workers, source replay, search, preserved manual progress, and [persist-first saves with durable enrichment](specs/background-work.md#persist-first-then-enrich-the-entity): [background work](specs/background-work.md).
+- Provider subscriptions linked to existing users/workspaces and [access checks without repeated provider reconciliation](specs/subscriptions.md#enforce-access-without-repeated-provider-reconciliation): [subscriptions](specs/subscriptions.md).
 - Grant/load credits and consume them for services: [credits](specs/credits.md).
 - Existing template/dashboard to authorized backend: [management](specs/management.md).
 - Email unsubscribe, tracking/privacy choices or required terms acceptance: [user choices](specs/user-choices.md), only when affected. Reuse provider controls; this is not legal compliance certification.

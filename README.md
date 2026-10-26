@@ -31,8 +31,8 @@ Explicitly request `$applift-specs` or ask the agent to read [SKILL.md](SKILL.md
 | Add Google/provider sign-in and session recovery | [Identity and session recovery](specs/identity.md) |
 | Add private users or shared teams / multi-tenant ownership | [Ownership and sharing](specs/ownership.md) |
 | Let each customer connect their own mailbox or service | [Connections and reconnection](specs/connections.md) |
-| Keep imports, workers and search private; preserve completed work on replay | [Background work and business progress](specs/background-work.md) |
-| Link provider subscriptions to existing users/workspaces and app capabilities | [Subscriptions and access](specs/subscriptions.md) |
+| Keep imports/workers private, preserve progress, or return saves before durable enrichment finishes | [Background work and business progress](specs/background-work.md) |
+| Link subscriptions to app capabilities; enforce access without repeated provider reconciliation | [Subscriptions and access](specs/subscriptions.md) |
 | Load and consume service credits without requiring a subscription | [Credits](specs/credits.md) |
 | Connect an admin template or dashboard to the database | [Management mapping](specs/management.md) |
 | Respect email unsubscribe, privacy choices or required terms acceptance | [User choices](specs/user-choices.md), only where the workflow needs it |

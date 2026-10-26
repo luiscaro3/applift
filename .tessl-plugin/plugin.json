@@ -1,6 +1,6 @@
 {
   "name": "ws-01a163a1584877afbb3893e6c7dafc5e/applift-specs",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Architectural guidance for coding agents adding private customer access, connections, background work, subscriptions or service credits to existing apps. Specs only; reuse the host and chosen providers.",
   "private": false,
   "skills": ["."]
