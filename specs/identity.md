@@ -38,6 +38,29 @@ Email/name are optional contact/display values, not identity keys. Add them only
 
 Before redirecting after expiry, preserve unsent work only if safe; do not leak private drafts into shared browser storage or restore them to a different user. Sign-in recovery does not recreate revoked team membership.
 
+## Reuse sessions and validate requests
+
+Concrete transition: a returning user stays signed in and ordinary requests reuse valid authentication without unnecessary provider calls. Inspect the chosen SDK and actual network path before diagnosing repeated refreshes. Preserve provider persistence/renewal defaults unless the device or security policy justifies an override; use native SDK/session facilities rather than a new custom session framework.
+
+| Layer | Required behavior |
+| --- | --- |
+| Client session and token renewal | Restore the SDK-managed session under the agreed device policy. Reuse a usable token through the normal SDK getter; let the SDK renew when needed. Avoid forcing refresh, re-login or profile reload for every operation. A getter call alone does not prove a network request. |
+| Backend token validation | Authenticate every protected request with the supported verifier. For locally verifiable signed tokens, check signature, allowed algorithm, trusted issuer/audience, subject and expiry/other required claims. Reuse the verifier's signing-key cache with its documented expiry/rotation behavior. Decoding claims alone grants nothing; opaque tokens or provider-required introspection still use the supported remote validation path. |
+| App authorization and revocation | Check current native membership, account/deletion state and applicable session-revocation boundary at the enforcing operation. A valid signature does not establish current app permission or knowledge of upstream session revocation. Preserve existing revocation guarantees. |
+| Paid capability eligibility | Apply the separate [subscription freshness and reconciliation contract](subscriptions.md#enforce-access-without-repeated-provider-reconciliation). Login persistence, signing keys and paid access have separate validity boundaries; fresh authentication does not require a new Stripe inventory. Explicit billing transitions retain authoritative verification. |
+
+Keep token expiry, key-cache lifetime and revocation freshness distinct. Document how upstream revocation/disabled-user state reaches the guard and its maximum detection delay. Local app state covers only revocations it actually receives. If the provider or agreed policy requires an online revocation check, retain it; replacing it with bounded reuse requires an explicit security-policy decision and a working invalidation/refresh path. Never disable that check merely to meet a latency goal, or extend validity on an error.
+
+Reuse verifier/key-cache instances where supported. Keep mutable user/session state scoped to its actor/client or server request. Use SDK coordination first; if extra single-flight coordination is needed, coalesce renewal by session and key discovery by trusted issuer/project context. Bound waits/retries, clear settled failures, and reuse completed results only within their validity. Key rotation or an unknown key can trigger the verifier's bounded refresh, never unlimited retries or acceptance with unverified keys. Logout/account switching must prevent a late renewal from restoring the old private context.
+
+### Focused acceptance checks
+
+- Restore/reopen under the selected persistence policy. With a usable token, warm signing keys and valid revocation/entitlement facts, repeated and concurrent protected requests avoid forced renewal and unnecessary provider/profile/billing calls while authentication and native authorization still run. Record required remote checks separately; zero calls is conditional on the chosen mechanism/policy.
+- Exercise token expiry, tampering, wrong issuer/audience, key-cache expiry/rotation and provider outage: supported renewal/rejection stays bounded; unverified or expired tokens gain no access. Count actual provider calls separately from SDK getter invocations and cold key loads.
+- Race concurrent renewal/key loading with logout/account switching; verify SDK coordination or scoped single-flight prevents redundant work and cross-user state reuse. Remove app membership and revoke a provider session: the next enforcing check honors local denial and the declared upstream detection bound. A still-signed token cannot restore revoked app permission.
+
+Official mechanism examples: [SDK persistence](https://firebase.google.com/docs/auth/web/auth-state-persistence), [token reuse/renewal](https://firebase.google.com/docs/reference/js/auth.user#usergetidtoken), [verification and key caching](https://firebase.google.com/docs/auth/admin/verify-id-tokens), [online revocation checks](https://firebase.google.com/docs/auth/admin/manage-sessions), and [local-verification availability depends on provider/key configuration](https://supabase.com/docs/reference/javascript/auth-getclaims). Use current provider instructions rather than copying cache durations or token mechanics into a custom implementation.
+
 ## Handoff and essential checks
 
 Name signup policy, chosen auth service, current user key, session validation boundary and private-cache reset points. Operator owns approved OAuth app/redirect configuration and consent. Verify repeat login keeps one user, altered/invalid session cannot access a protected operation, and expiry leads to refresh or usable sign-in recovery. These are implementation checks, not claims that this spec ran them.
