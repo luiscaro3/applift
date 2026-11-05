@@ -1,0 +1,178 @@
+{
+  "reviewRunId": "01a1abbd-899e-754c-acde-189ee73d885f",
+  "status": "completed",
+  "review-plugin": "tessl/default-skill-review@0.2.0",
+  "validation": {
+    "overallPassed": true,
+    "errorCount": 0,
+    "warningCount": 0,
+    "checks": [
+      {
+        "name": "skill_md_line_count",
+        "status": "passed",
+        "message": "SKILL.md line count is 45 (<= 500)"
+      },
+      {
+        "name": "frontmatter_valid",
+        "status": "passed",
+        "message": "YAML frontmatter is valid"
+      },
+      {
+        "name": "name_field",
+        "status": "passed",
+        "message": "'name' field is valid: 'applift-specs'"
+      },
+      {
+        "name": "description_field",
+        "status": "passed",
+        "message": "'description' field is valid (417 chars)"
+      },
+      {
+        "name": "compatibility_field",
+        "status": "passed",
+        "message": "'compatibility' field not present (optional)"
+      },
+      {
+        "name": "allowed_tools_field",
+        "status": "passed",
+        "message": "'allowed-tools' field not present (optional)"
+      },
+      {
+        "name": "metadata_version",
+        "status": "passed",
+        "message": "'metadata' field not present (optional)"
+      },
+      {
+        "name": "metadata_field",
+        "status": "passed",
+        "message": "'metadata' field not present (optional)"
+      },
+      {
+        "name": "license_field",
+        "status": "passed",
+        "message": "'license' field is present: MIT"
+      },
+      {
+        "name": "frontmatter_unknown_keys",
+        "status": "passed",
+        "message": "No unknown frontmatter keys found"
+      },
+      {
+        "name": "body_present",
+        "status": "passed",
+        "message": "SKILL.md body is present"
+      },
+      {
+        "name": "scripts_directory",
+        "status": "passed",
+        "message": "'scripts/' directory not present in bundle (optional)"
+      },
+      {
+        "name": "references_directory",
+        "status": "passed",
+        "message": "'references/' directory contains 13 file(s)"
+      },
+      {
+        "name": "assets_directory",
+        "status": "passed",
+        "message": "'assets/' directory not present in bundle (optional)"
+      },
+      {
+        "name": "relative_links",
+        "status": "passed",
+        "message": "Relative markdown links look valid"
+      },
+      {
+        "name": "referenced_paths_exist",
+        "status": "passed",
+        "message": "Referenced paths look valid"
+      }
+    ]
+  },
+  "judges": {
+    "content": {
+      "scale": {
+        "max": 5,
+        "min": 1
+      },
+      "success": true,
+      "evaluation": {
+        "scores": {
+          "conciseness": {
+            "score": 5,
+            "reasoning": "The ~38-line body is dense with skill-specific policy and contains no padding or explanation of concepts Claude already knows; every sentence ('Preserve existing entities, IDs, native guards and provider-managed state/defaults') carries non-obvious guidance. It assumes Claude's competence and matches 'lean and efficient; every token earns its place'."
+          },
+          "actionability": {
+            "score": 4,
+            "reasoning": "The five-step workflow gives concrete instructions ('trace the affected entities, IDs, auth, credentials, queries and workers') and the worked example uses real specifics ('GET/PATCH /projects/:projectId/notes/:noteId', 'requireOwnedProject(actor, projectId)'). However much of the body is policy-level principle ('no owner column at every step, team/role engine or mirrored billing ledger by default') rather than executable instruction, fitting 'mostly executable guidance with minor gaps' rather than fully copy-paste ready."
+          },
+          "workflow_clarity": {
+            "score": 5,
+            "reasoning": "Inspect, Map, Resolve, Record and act, Verify and report form a clear sequence with an explicit feedback loop ('If a check fails, correct the bounded mapping/implementation and rerun affected checks') and validation checkpoints ('Mark these checks proposed until run', 'Report actual results or mark checks unrun'). Delayed-work authority rechecks are also explicit, matching the anchor for clear sequence with explicit validation and error-recovery loops."
+          },
+          "progressive_disclosure": {
+            "score": 5,
+            "reasoning": "The body is a concise overview pointing to 13 real one-level-deep reference files, each bullet clearly signaling its topic and usage condition ('Email unsubscribe ... only when affected') with apt deep links (e.g. background-work.md#persist-first-then-enrich-the-entity). All referenced files exist in the bundle and cross-links between them are lateral, not nested chains, matching 'clear overview with well-signaled one-level-deep references'."
+          }
+        },
+        "suggestions": [],
+        "overall_assessment": "An exemplary instruction-only skill body: a tightly sequenced five-step workflow with explicit validation and feedback loops, a concrete worked mapping example, and a lean overview that delegates all contract detail to well-labeled one-level-deep references. The only relative weakness is that much of the core guidance is abstract policy language, which slightly limits copy-paste actionability."
+      },
+      "weightedScore": 4.7,
+      "normalizedScore": 0.925
+    },
+    "description": {
+      "scale": {
+        "max": 5,
+        "min": 1
+      },
+      "success": true,
+      "evaluation": {
+        "scores": {
+          "specificity": {
+            "score": 4,
+            "reasoning": "The description names the domain ('Map private customer access onto an existing personal app') and several concrete deliverables ('a short host-specific plan, implementation guidance and checks') plus a scope exclusion ('Skip new-app scaffolding and SDK mechanics'). It falls between anchor 3 (only 1-2 actions) and anchor 5 (comprehensive action coverage), fitting 'several specific actions; minor gaps'."
+          },
+          "completeness": {
+            "score": 5,
+            "reasoning": "It explicitly answers both questions: 'what' (map private customer access onto an existing personal app with a plan, guidance and checks) and 'when' ('Use when login/authentication, ... need connecting to existing entities and workflows') with concrete trigger phrases. This matches the anchor-5 example structure exactly."
+          },
+          "trigger_term_quality": {
+            "score": 4,
+            "reasoning": "The when-clause lists natural terms users would say: 'login/authentication, multi-tenant isolation, customer-owned connections, background imports, subscription billing, service credits or admin screens'. Coverage is good but misses common synonyms and product names (SSO/OAuth, teams/workspaces, Stripe), so it fits 'good keyword coverage; a few natural terms missing' rather than comprehensive."
+          },
+          "distinctiveness_conflict_risk": {
+            "score": 4,
+            "reasoning": "The niche is clear (retrofitting customer access onto an existing personal app, not new-app scaffolding), and triggers like 'multi-tenant isolation' and 'service credits' are distinctive. However 'login/authentication' and 'admin screens' are broad terms that overlap generic auth/admin skills, so it fits 'mostly distinct; minor overlap risk' rather than minimal conflict risk."
+          }
+        },
+        "suggestions": [],
+        "overall_assessment": "A strong description with an explicit 'Use when' clause containing concrete, natural trigger terms, a clear statement of what the skill delivers, and a useful skip boundary. Minor overlap risk with generic auth/billing skills and a few missing synonyms keep trigger quality and distinctiveness at 4."
+      },
+      "weightedScore": 4.35,
+      "normalizedScore": 0.8375
+    }
+  },
+  "scoring": {
+    "components": [
+      {
+        "id": "validation",
+        "weight": 0.19999999999999996,
+        "normalized": 1
+      },
+      {
+        "id": "description",
+        "weight": 0.4,
+        "normalized": 0.8375
+      },
+      {
+        "id": "content",
+        "weight": 0.4,
+        "normalized": 0.925
+      }
+    ]
+  },
+  "review": {
+    "reviewScore": 90
+  }
+}

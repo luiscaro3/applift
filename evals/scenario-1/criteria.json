@@ -1,0 +1,11 @@
+{
+  "context": "Planning subscription eligibility on existing users and workers under an explicit policy, without changing app behavior or architecture.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {"name":"trusted_activation", "description":"Removes redirect/query authority; maps verified provider subscription/customer/price facts and merchant/environment to the existing user; uses backend native owner permission plus derived paid eligibility.", "max_score":20},
+    {"name":"policy_and_freshness", "description":"Retains paid-through scheduled-cancellation access and free sign-in/read; enforces both 10-minute freshness and cutoff; missing/stale facts require bounded authoritative refresh or pending/denied, and failure never advances verifiedAt or adds grace.", "max_score":25},
+    {"name":"worker_authority", "description":"Checks current ownership/account state and eligibility before subsequent chargeable stages and result commit; prevents a frozen enqueue decision bypassing invalidation; explicit resume avoids silently publishing backlog.", "max_score":20},
+    {"name":"convergence_and_reuse", "description":"Reuses the canonical user mapping, provider portal/retries and local verified facts; handles duplicate/reordered events and racing refresh with conditional revision/current-state reconciliation; avoids repeated provider inventory for fresh ordinary guards and new ledgers/role systems.", "max_score":20},
+    {"name":"checks_and_limits", "description":"Maps the supplied operations to concrete activation/spoofing/cross-owner/cutoff/outage/race checks, including zero refresh for fresh repeated ordinary guards; labels proposals and checks unrun and does not claim live provider evidence.", "max_score":15}
+  ]
+}

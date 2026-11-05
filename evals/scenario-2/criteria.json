@@ -1,0 +1,11 @@
+{
+  "context": "Retry-safe service-credit planning on existing users/jobs/payments; no runtime or provider evidence is expected.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {"name":"trusted_grants", "description":"Uses verified order owner/amount and provider-scoped payment identity, not notification ID or browser values, to atomically apply each purchase once using existing payment records.", "max_score":20},
+    {"name":"atomic_acceptance", "description":"Checks native actor/owner permission; uses server cost 3; atomically binds operation identity/owner/prompt/cost to one debit and accepted job; native conditional transaction/uniqueness prevents concurrent overspend and conflicting key reuse.", "max_score":25},
+    {"name":"recovery", "description":"Looks up accepted operation before rejecting for low current balance; resumes without double debit; keeps external calls outside retryable database transactions; reuses provider idempotency and reconciles uncertain outcomes instead of blind duplicate effects or refunds.", "max_score":25},
+    {"name":"minimal_model", "description":"Reuses users/jobs/payments and existing native mechanisms; retains free signup/viewing without mandatory subscriptions, wallet framework, mirrored billing ledger or new ownership hierarchy; confirmed failure compensation applies once.", "max_score":15},
+    {"name":"checks_and_evidence", "description":"Provides operation-level duplicate-grant/debit/refund, changed-key, cross-owner, insufficient-funds, concurrency and interruption checks with expected balance/job results; distinguishes proposals/unrun checks and claims no executed integration.", "max_score":15}
+  ]
+}
