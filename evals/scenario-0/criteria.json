@@ -1,0 +1,11 @@
+{
+  "context": "Host-specific mapping quality for managed sign-in and individual private notes. Evaluate PLAN.md; no runtime implementation is requested.",
+  "type": "weighted_checklist",
+  "checklist": [
+    {"name":"stable_actor", "description":"Maps verified issuer/subject to existing local users using a unique durable relationship only because provider and host IDs differ; repeat/concurrent callbacks converge; does not link by matching email.", "max_score":25},
+    {"name":"enforcing_operations", "description":"Replaces the development actor selector with backend-verified sessions and maps get/edit/search to project ownership; constrains note access to its authorized parent and denies cross-owner access.", "max_score":25},
+    {"name":"preserve_and_reuse", "description":"Preserves existing user/project/note IDs, founder assignment and audit references; reuses existing parent ownership and provider sessions; avoids per-note owner duplication, teams/roles, custom auth and billing.", "max_score":20},
+    {"name":"recovery", "description":"Uses supported session renewal/rejection, clears private state on logout/account switch and prevents stale responses from repopulating another user's cache; does not treat authentication as ownership permission.", "max_score":15},
+    {"name":"observable_evidence", "description":"Connects actual host operations to positive/negative/repeat/recovery checks and distinguishes inspected facts, proposals, unknowns and unrun checks; claims no executed integration or measured savings.", "max_score":15}
+  ]
+}
